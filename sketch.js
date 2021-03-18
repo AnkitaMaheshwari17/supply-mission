@@ -45,14 +45,29 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
+  if (keyCode === LEFT_ARROW) {
 
-  if (keyDown(LEFT_ARROW)){
-	helicopterSprite.velocityX = -5;
-  }
+    helicopterSprite.x=helicopterSprite.x-20;    
+    translation={x:-20,y:0}
+    Matter.Body.translate(packageBody, translation)
 
-  if (keyDown(RIGHT_ARROW)){
-	  helicopterSprite.velocityX = 5;
+
+  } else if (keyCode === RIGHT_ARROW) {
+    helicopterSprite.x=helicopterSprite.x+20;
+    translation={x:20,y:0}
+    Matter.Body.translate(packageBody, translation)
   }
+  else if (keyCode === DOWN_ARROW) {
+    Matter.Body.setStatic(packageBody,false);
+    
+  }
+ // if (keyDown(LEFT_ARROW)){
+//	helicopterSprite.velocityX = -5;
+ // }
+
+ // if (keyDown(RIGHT_ARROW)){
+//	  helicopterSprite.velocityX = 5;
+ // }
 
   //if (keyDown(DOWN_ARROW)){
 	  //Matter.packageBody.setStatic(packageBody, {isStatic:false});
